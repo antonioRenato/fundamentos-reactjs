@@ -111,7 +111,6 @@
   color: var(--white);
   font-weight: bold;
   cursor: pointer;
-
   transition: background-color 0.1s;
 }
 
