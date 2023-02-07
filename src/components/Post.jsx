@@ -1,23 +1,28 @@
+import { format, formatDistanceToNow } from "date-fns"
+import ptbr from "date-fns/locale/pt-BR"
+
 import { useState } from "react"
 import { Avatar } from "./Avatar"
 import { Comment } from "./comment"
 import styles from "./Post.module.css"
 
-export function Post({ author, publishedAt, content }) {
+export function Post({ author, publishAt, content }) {
   const [comments, setComments] = useState([1, 2])
 
-  const publisheDateFormated = new Intl.DateTimeFormat("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(publishedAt)
+  const publisheDateFormated = format(publishAt, "d 'de' LLLL 'às' HH:mm'h'", {
+    locale: ptbr,
+  })
 
   function handleCreateNewComment() {
     event.preventDefault()
 
     setComments([...comments, comments.length + 1])
   }
+
+  const publishedDateRelativeToNow = formatDistanceToNow(publishAt, {
+    locale: ptbr,
+    addSuffix: true,
+  })
 
   return (
     <article className={styles.post}>
@@ -30,8 +35,8 @@ export function Post({ author, publishedAt, content }) {
           </div>
         </div>
 
-        <time title={publisheDateFormated} dateTime="2023-01-09 08:13:30">
-          Publicado a 2h
+        <time title={publisheDateFormated} dateTime={publishAt.toISOString()}>
+          {publishedDateRelativeToNow}
         </time>
       </header>
 

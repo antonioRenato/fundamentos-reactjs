@@ -27,7 +27,7 @@ const posts = [
       },
       { type: "link", content: "dani.design/doctorcare" },
     ],
-    publishedAt: new Date("2023-01-08 20:00:00"),
+    publishedAt: new Date("2023-02-07 20:00:00"),
   },
   {
     id: 2,
@@ -45,7 +45,7 @@ const posts = [
       },
       { type: "link", content: "dani.devitz/daniela" },
     ],
-    publishedAt: new Date("2023-01-20 18:00:00"),
+    publishedAt: new Date("2023-02-05 18:00:00"),
   },
 ]
 
