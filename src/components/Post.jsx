@@ -2,26 +2,43 @@ import { Avatar } from "./Avatar"
 import { Comment } from "./comment"
 import styles from "./Post.module.css"
 
-export function Post(props) {
-  console.log(props)
+export function Post({ author, publishedAt, content }) {
+  const publisheDateFormated = new Intl.DateTimeFormat("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(publishedAt)
 
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src="https:/github.com/antonioRenato.png" />
+          <Avatar src={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>Antonio Renato</strong>
-            <span>Web Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
-        <time title="03 de feveiro às 09:37" dateTime="">
-          Publicado há 1h
+        <time title={publisheDateFormated} dateTime="2023-01-09 08:13:30">
+          Publicado a 2h
         </time>
       </header>
 
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+        {content.map((line) => {
+          if (line.type === "paragraph") {
+            return <p>{line.content}</p>
+          } else if (line.type === "link") {
+            return (
+              <p>
+                <a href="#">{line.content}</a>
+              </p>
+            )
+          }
+        })}
+      </div>
 
       <form className={styles.commentForm}>
         <strong>Deixe seu feedback...</strong>

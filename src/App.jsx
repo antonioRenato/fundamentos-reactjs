@@ -27,7 +27,7 @@ const posts = [
       },
       { type: "link", content: "dani.design/doctorcare" },
     ],
-    publishAt: new Date("2023-01-08 20:00:00"),
+    publishedAt: new Date("2023-01-08 20:00:00"),
   },
   {
     id: 2,
@@ -45,7 +45,7 @@ const posts = [
       },
       { type: "link", content: "dani.devitz/daniela" },
     ],
-    publishAt: new Date("2023-01-20 18:00:00"),
+    publishedAt: new Date("2023-01-20 18:00:00"),
   },
 ]
 
@@ -61,7 +61,7 @@ export function App() {
               <Post
                 author={post.author}
                 content={post.content}
-                publishAt={post.publishAt}
+                publishAt={post.publishedAt}
               />
             )
           })}
