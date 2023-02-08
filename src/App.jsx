@@ -22,8 +22,7 @@ const posts = [
       { type: "paragraph", content: "Fala Galera 🖐" },
       {
         type: "paragraph",
-        content:
-          "Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return.",
+        content: "Estudei HTML, CSS e JS, agora estou estudando React!!",
       },
       { type: "link", content: "dani.design/doctorcare" },
     ],
