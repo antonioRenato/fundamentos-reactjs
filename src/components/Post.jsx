@@ -23,6 +23,7 @@ export function Post({ author, publishAt, content }) {
   }
 
   function handleNewCommentChange() {
+    event.target.setCustomValidity("")
     setNewCommentText(event.target.value)
   }
 
@@ -32,6 +33,10 @@ export function Post({ author, publishAt, content }) {
     })
 
     setComments(commentsWithoutDeletedOne)
+  }
+
+  function handleNewCommentInvalid() {
+    event.target.setCustomValidity("Esse campo é obrigatório!")
   }
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishAt, {
@@ -76,6 +81,8 @@ export function Post({ author, publishAt, content }) {
           placeholder="Deixe um comentário"
           onChange={handleNewCommentChange}
           value={newCommentText}
+          onInvalid={handleNewCommentInvalid}
+          required
         />
         <footer>
           <button type="submit">Publicar</button>
